@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystery Link Countdown</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    #countdown {
+      font-size: 2.5rem;
+      margin: 20px 0;
+    }
+    a.button {
+      background: #00ffcc;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    a.button:hover {
+      background: #00bfa5;
+    }
+    #loading-text {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      white-space: nowrap;
+    }
+    .dots::after {
+      content: '';
+      display: inline-block;
+      animation: dots 1.5s steps(3, end) infinite;
+    }
+    @keyframes dots {
+      0%   { content: ''; }
+      33%  { content: '.'; }
+      66%  { content: '..'; }
+      100% { content: '...'; }
+    }
+  </style>
+</head>
+<body onload="startLoading(); playAudio();">
+  <h1 id="loading-text" class="dots">Initializing secure session</h1>
+  <div id="main-content" style="display:none;">
+    <h1>This page will self-close in:</h1>
+    <div id="countdown">30</div>
+    <a href="https://www.profitableratecpm.com/jpwq7kwq?key=e00fcac101e1f824b271f154a9b46de7" class="button" target="_blank" onclick="playAudio()">▶ View Page Now</a>
+  </div>
+
+  <audio id="bg-audio" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/05/10/audio_7d462e646f.mp3?filename=typewriter-141931.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function startLoading() {
+      setTimeout(() => {
+        document.getElementById("loading-text").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+        startCountdown();
+      }, 3000); // Fake load time
+    }
+
+    function startCountdown() {
+      let seconds = 30;
+      const countdown = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        seconds--;
+        countdown.textContent = seconds;
+
+        if (seconds <= 0) {
+          clearInterval(timer);
+          window.close();
+        }
+      }, 1000);
+    }
+
+    function playAudio() {
+      const audio = document.getElementById("bg-audio");
+      audio.play().catch(e => console.log("Autoplay blocked: ", e));
+    }
+  </script>
+</body>
+</html>
